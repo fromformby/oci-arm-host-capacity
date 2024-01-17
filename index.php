@@ -110,6 +110,12 @@ foreach ($availabilityDomains as $availabilityDomainEntity) {
             continue;
         }
 
+        $message = 'failed attempts';
+        echo "$message\n";
+        if ($notifier->isSupported()) {
+            $notifier->notify($message);
+        }
+
         // current config is broken
         return;
     }
